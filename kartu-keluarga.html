@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPRUTA - Kartu Keluarga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">🏠</div>
+                <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
+            </div>
+             <nav class="sidebar-menu">
+          <ul>
+            <li>
+              <a href="dashboard.html"><span>🏠</span> Dashboard</a>
+            </li>
+            <li>
+              <a href="data-warga.html"><span>👥</span> Data Warga</a>
+            </li>
+            <li>
+              <a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a>
+            </li>
+            <li>
+              <a href="keuangan.html"><span>💰</span> Keuangan</a>
+            </li>
+            <li>
+              <a href="kejadian.html"><span>ℹ️</span> Kejadian</a>
+            </li>
+            <li>
+              <a href="pengumuman.html"><span>📆</span> Pengumuman</a>
+            </li>
+            <li>
+              <a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a>
+            </li>
+          </ul>
+        </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Kartu Keluarga</h1>
+                <button class="btn-primary">Tambah KK Baru</button>
+            </div>
+
+            <!-- Statistik KK -->
+            <div class="kk-stats">
+                <div class="stat-box">
+                    <h3>Total Keluarga</h3>
+                    <p>65</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Total Anggota</h3>
+                    <p>234</p>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchKK" placeholder="Cari Keterangan......">
+                <button class="btn-search">Cari</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>No KK</th>
+                            <th>Kepala Keluarga</th>
+                            <th>Alamat</th>
+                            <th>Jumlah Anggota</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>33108164109602</td>
+                            <td>Seful Rhoman</td>
+                            <td>Blok A, No 1</td>
+                            <td>4</td>
+                            <td>
+                                <button class="btn-detail">Detail</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>33108164109602</td>
+                            <td>Rojali Siregar</td>
+                            <td>Blok C, No 12</td>
+                            <td>4</td>
+                            <td>
+                                <button class="btn-detail">Detail</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>33108164109602</td>
+                            <td>Joseph Akim</td>
+                            <td>Blok C, No 13</td>
+                            <td>2</td>
+                            <td>
+                                <button class="btn-detail">Detail</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>33108164109602</td>
+                            <td>Hilal Fahrizal</td>
+                            <td>Blok B, No 7</td>
+                            <td>2</td>
+                            <td>
+                                <button class="btn-detail">Detail</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>33108164109602</td>
+                            <td>Goendoel Subroto</td>
+                            <td>Blok D, No 3</td>
+                            <td>1</td>
+                            <td>
+                                <button class="btn-detail">Detail</button>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

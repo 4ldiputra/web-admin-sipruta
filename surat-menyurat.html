@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPRUTA - Pencatatan Permintaan Surat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">🏠</div>
+                <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
+                    <li><a href="data-warga.html"><span>👥</span> Data Warga</a></li>
+                    <li><a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a></li>
+                    <li><a href="keuangan.html"><span>💰</span> Keuangan</a></li>
+                    <li><a href="kejadian.html"><span>ℹ️</span> Kejadian</a></li>
+                    <li><a href="pengumuman.html"><span>📆</span> Pengumuman</a></li>
+                    <li><a href="surat-menyurat.html" class="active"><span>✉️</span> Surat Menyurat</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Pencatatan Permintaan Surat</h1>
+            </div>
+
+            <!-- Form Permintaan Surat -->
+            <div class="form-container">
+                <form id="suratForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="namaWarga">Nama Warga</label>
+                            <input type="text" id="namaWarga" placeholder="Masukkan nama warga" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="noKTP">No KTP</label>
+                            <input type="text" id="noKTP" placeholder="Masukkan nomor KTP" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="jenisSurat">Jenis Surat</label>
+                            <input type="text" id="jenisSurat" placeholder="Masukkan jenis surat (misal: Surat Keterangan)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalPermintaan">Tanggal Permintaan</label>
+                            <input type="date" id="tanggalPermintaan" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tujuanSurat">Tujuan Pembuatan Surat</label>
+                        <textarea id="tujuanSurat" rows="3" placeholder="Masukkan tujuan pembuatan surat" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="catatanTambahan">Catatan Tambahan</label>
+                        <textarea id="catatanTambahan" rows="3" placeholder="Masukkan catatan tambahan (opsional)"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Simpan Permintaan</button>
+                </form>
+            </div>
+
+            <!-- Daftar Permintaan Surat -->
+            <div class="table-container">
+                <h2>Daftar Permintaan Surat</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Warga</th>
+                            <th>Jenis Surat</th>
+                            <th>Tanggal</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ahmad Susanto</td>
+                            <td>Surat Keterangan</td>
+                            <td>23/7/2025</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Dewi Lestari</td>
+                            <td>Surat Domisili</td>
+                            <td>18/7/2025</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Budi Raharjo</td>
+                            <td>Surat Izin Usaha</td>
+                            <td>4/7/2025</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Siti Nurhaliza</td>
+                            <td>Surat Pengantar</td>
+                            <td>23/6/2025</td>
+                            <td>
+                                <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

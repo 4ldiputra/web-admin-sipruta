@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPRUTA - Data Warga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">🏠</div>
+                <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
+                    <li><a href="data-warga.html" class="active"><span>👥</span> Data Warga</a></li>
+                    <li><a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a></li>
+                    <li><a href="keuangan.html"><span>💰</span> Keuangan</a></li>
+                    <li><a href="kejadian.html"><span>ℹ️</span> Kejadian</a></li>
+                    <li><a href="pengumuman.html"><span>📆</span> Pengumuman</a></li>
+                    <li><a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Daftar Warga</h1>
+                <button class="btn-primary" id="btnTambahWarga">Tambah Warga Baru</button>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchWarga" placeholder="Cari Nama Warga......">
+                <button class="btn-search">Cari</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIK</th>
+                            <th>JK</th>
+                            <th>TTL</th>
+                            <th>Agama</th>
+                            <th>Alamat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-id="1">
+                            <td>1</td>
+                            <td>Yoyok Markawi</td>
+                            <td>33021945610400</td>
+                            <td>L</td>
+                            <td>Depok, 12-11-1980</td>
+                            <td>Islam</td>
+                            <td>Blok E No.10</td>
+                            <td>
+                                <button class="btn-edit" data-id="1">Edit</button>
+                                <button class="btn-delete" data-id="1">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr data-id="2">
+                            <td>2</td>
+                            <td>Slamet Lancelot</td>
+                            <td>33021568780090</td>
+                            <td>L</td>
+                            <td>Kediri, 13-10-1987</td>
+                            <td>Islam</td>
+                            <td>Blok C No.1</td>
+                            <td>
+                                <button class="btn-edit" data-id="2">Edit</button>
+                                <button class="btn-delete" data-id="2">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr data-id="3">
+                            <td>3</td>
+                            <td>Sukartinah</td>
+                            <td>331019731993009</td>
+                            <td>P</td>
+                            <td>Cirebon, 17-8-1997</td>
+                            <td>Islam</td>
+                            <td>Blok D No.3</td>
+                            <td>
+                                <button class="btn-edit" data-id="3">Edit</button>
+                                <button class="btn-delete" data-id="3">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr data-id="4">
+                            <td>4</td>
+                            <td>Rodrigo Akim</td>
+                            <td>331082019037107</td>
+                            <td>L</td>
+                            <td>Bekasi, 26-10-2001</td>
+                            <td>Konghucu</td>
+                            <td>Blok E No.11</td>
+                            <td>
+                                <button class="btn-edit" data-id="4">Edit</button>
+                                <button class="btn-delete" data-id="4">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr data-id="5">
+                            <td>5</td>
+                            <td>Chalya Putri</td>
+                            <td>3310922891192471</td>
+                            <td>P</td>
+                            <td>Banyumas, 10-10-2004</td>
+                            <td>Islam</td>
+                            <td>Blok A No.1</td>
+                            <td>
+                                <button class="btn-edit" data-id="5">Edit</button>
+                                <button class="btn-delete" data-id="5">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Tambah Data Warga -->
+    <div class="modal" id="tambahModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tambah Data Warga</h2>
+            <form id="formTambahWarga">
+                <div class="form-group">
+                    <label for="namaLengkap">Nama Lengkap</label>
+                    <input type="text" id="namaLengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="nik">NIK</label>
+                    <input type="text" id="nik" required>
+                </div>
+                <div class="form-group">
+                    <label for="jenisKelamin">Jenis Kelamin</label>
+                    <input type="text" id="jenisKelamin" required>
+                </div>
+                <div class="form-group">
+                    <label for="tempatTanggalLahir">Tempat Tanggal Lahir</label>
+                    <input type="text" id="tempatTanggalLahir" required>
+                </div>
+                <div class="form-group">
+                    <label for="agama">Agama</label>
+                    <input type="text" id="agama" required>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" id="alamat" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalTambah">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanTambah">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Data Warga -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Data Warga</h2>
+            <form id="formEditWarga">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label for="editNamaLengkap">Nama Lengkap</label>
+                    <input type="text" id="editNamaLengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="editNik">NIK</label>
+                    <input type="text" id="editNik" required>
+                </div>
+                <div class="form-group">
+                    <label for="editJenisKelamin">Jenis Kelamin</label>
+                    <input type="text" id="editJenisKelamin" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTempatTanggalLahir">Tempat Tanggal Lahir</label>
+                    <input type="text" id="editTempatTanggalLahir" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAgama">Agama</label>
+                    <input type="text" id="editAgama" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAlamat">Alamat</label>
+                    <input type="text" id="editAlamat" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalEdit">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanEdit">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal" id="hapusModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yakin ingin menghapus item ini?</h2>
+            <div class="modal-buttons">
+                <button type="button" class="btn-ok" id="btnOkHapus">OK</button>
+                <button type="button" class="btn-cancel" id="btnBatalHapus">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

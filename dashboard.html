@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIPRUTA - Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo-circle">🏠</div>
+          <h1>SIPRUTA<br />(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
+        </div>
+        <nav class="sidebar-menu">
+          <ul>
+            <li>
+              <a href="dashboard.html"><span>🏠</span> Dashboard</a>
+            </li>
+            <li>
+              <a href="data-warga.html"><span>👥</span> Data Warga</a>
+            </li>
+            <li>
+              <a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a>
+            </li>
+            <li>
+              <a href="keuangan.html"><span>💰</span> Keuangan</a>
+            </li>
+            <li>
+              <a href="kejadian.html"><span>ℹ️</span> Kejadian</a>
+            </li>
+            <li>
+              <a href="pengumuman.html"><span>📆</span> Pengumuman</a>
+            </li>
+            <li>
+              <a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Statistik Cards -->
+        <div class="stats-cards">
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value">234</div>
+            <div class="stat-label">Total Warga</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <div class="stat-value">65</div>
+            <div class="stat-label">Kartu Keluarga</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value">Rp 3.250.000</div>
+            <div class="stat-label">Saldo Keuangan</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔔</div>
+            <div class="stat-value">13</div>
+            <div class="stat-label">Kejadian Bulan ini</div>
+          </div>
+        </div>
+
+        <!-- Statistik Warga Berdasarkan Usia -->
+        <div class="chart-container">
+          <h2>Statistik Warga Berdasarkan Usia</h2>
+          <div class="chart-placeholder">
+            <p>📊 Grafik Statistik Warga Berdasarkan Usia (Placeholder)</p>
+            <p>
+              0-12 Tahun: 20 | 13-17 Tahun: 18 | 18-25 Tahun: 55 | 26-35 Tahun:
+              22 | 36-45 Tahun: 65 | 46-55 Tahun: 45 | 56+ Tahun: 10
+            </p>
+          </div>
+        </div>
+
+        <!-- Statistik Keuangan -->
+        <div class="chart-container">
+          <h2>Statistik Keuangan</h2>
+          <div class="chart-placeholder">
+            <p>📈 Grafik Statistik Keuangan (Placeholder)</p>
+            <p>
+              Pemasukan (Biru): Januari 1.500.000, Februari 2.000.000, Maret
+              2.000.000, April 2.500.000, Mei 1.500.000, Juni 1.000.000, Juli
+              2.000.000
+            </p>
+            <p>
+              Pengeluaran (Merah): Januari 500.000, Februari 1.000.000, Maret
+              1.500.000, April 1.000.000, Mei 1.000.000, Juni 500.000, Juli
+              1.500.000
+            </p>
+          </div>
+        </div>
+
+        <!-- Aktivitas Terbaru -->
+        <div class="activity-container">
+          <h2>Aktivitas Terbaru</h2>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon">📢</div>
+              <div class="activity-content">
+                <h3>Pengumuman Kerja Bakti</h3>
+                <p>
+                  Akan diadakan kerja bakti lingkungan pada hari Minggu depan
+                </p>
+              </div>
+              <span class="activity-time">2 jam lalu</span>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">📄</div>
+              <div class="activity-content">
+                <h3>Surat Menyurat</h3>
+                <p>Surat keterangan domisili untuk Bapak Ahmad</p>
+              </div>
+              <span class="activity-time">1 hari lalu</span>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">🔔</div>
+              <div class="activity-content">
+                <h3>Laporan Kejadian</h3>
+                <p>Laporan pemadaman listrik di jalan Merdeka Blok C</p>
+              </div>
+              <span class="activity-time">1 minggu lalu</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
