@@ -14,49 +14,35 @@
                 <div class="logo-circle">🏠</div>
                 <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
             </div>
-             <nav class="sidebar-menu">
-          <ul>
-            <li>
-              <a href="dashboard.html"><span>🏠</span> Dashboard</a>
-            </li>
-            <li>
-              <a href="data-warga.html"><span>👥</span> Data Warga</a>
-            </li>
-            <li>
-              <a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a>
-            </li>
-            <li>
-              <a href="keuangan.html"><span>💰</span> Keuangan</a>
-            </li>
-            <li>
-              <a href="kejadian.html"><span>ℹ️</span> Kejadian</a>
-            </li>
-            <li>
-              <a href="pengumuman.html"><span>📆</span> Pengumuman</a>
-            </li>
-            <li>
-              <a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a>
-            </li>
-          </ul>
-        </nav>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
+                    <li><a href="data-warga.html"><span>👥</span> Data Warga</a></li>
+                    <li><a href="kartu-keluarga.html" class="active"><span>📁</span> Kartu Keluarga</a></li>
+                    <li><a href="keuangan.html"><span>💰</span> Keuangan</a></li>
+                    <li><a href="kejadian.html"><span>ℹ️</span> Kejadian</a></li>
+                    <li><a href="pengumuman.html"><span>📆</span> Pengumuman</a></li>
+                    <li><a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <div class="page-header">
                 <h1>Kartu Keluarga</h1>
-                <button class="btn-primary">Tambah KK Baru</button>
+                <button class="btn-primary" id="btnTambahKK">Tambah KK Baru</button>
             </div>
 
             <!-- Statistik KK -->
             <div class="kk-stats">
                 <div class="stat-box">
                     <h3>Total Keluarga</h3>
-                    <p>65</p>
+                    <p>75</p>
                 </div>
                 <div class="stat-box">
                     <h3>Total Anggota</h3>
-                    <p>234</p>
+                    <p>564</p>
                 </div>
             </div>
 
@@ -78,70 +64,287 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr data-id="1">
                             <td>1</td>
                             <td>33108164109602</td>
-                            <td>Seful Rhoman</td>
+                            <td>Cecep Gabriel</td>
                             <td>Blok A, No 1</td>
                             <td>4</td>
                             <td>
-                                <button class="btn-detail">Detail</button>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-detail" data-id="1">Detail</button>
+                                <button class="btn-edit" data-id="1">Edit</button>
+                                <button class="btn-delete" data-id="1">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="2">
                             <td>2</td>
                             <td>33108164109602</td>
                             <td>Rojali Siregar</td>
                             <td>Blok C, No 12</td>
                             <td>4</td>
                             <td>
-                                <button class="btn-detail">Detail</button>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-detail" data-id="2">Detail</button>
+                                <button class="btn-edit" data-id="2">Edit</button>
+                                <button class="btn-delete" data-id="2">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="3">
                             <td>3</td>
                             <td>33108164109602</td>
                             <td>Joseph Akim</td>
                             <td>Blok C, No 13</td>
                             <td>2</td>
                             <td>
-                                <button class="btn-detail">Detail</button>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-detail" data-id="3">Detail</button>
+                                <button class="btn-edit" data-id="3">Edit</button>
+                                <button class="btn-delete" data-id="3">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="4">
                             <td>4</td>
                             <td>33108164109602</td>
-                            <td>Hilal Fahrizal</td>
+                            <td>Seful Rhoman</td>
                             <td>Blok B, No 7</td>
                             <td>2</td>
                             <td>
-                                <button class="btn-detail">Detail</button>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-detail" data-id="4">Detail</button>
+                                <button class="btn-edit" data-id="4">Edit</button>
+                                <button class="btn-delete" data-id="4">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="5">
                             <td>5</td>
                             <td>33108164109602</td>
                             <td>Goendoel Subroto</td>
                             <td>Blok D, No 3</td>
                             <td>1</td>
                             <td>
-                                <button class="btn-detail">Detail</button>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-detail" data-id="5">Detail</button>
+                                <button class="btn-edit" data-id="5">Edit</button>
+                                <button class="btn-delete" data-id="5">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
+    </div>
+
+    <!-- Modal Tambah KK Baru -->
+    <div class="modal" id="tambahKKModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tambah KK Baru</h2>
+            <form id="formTambahKK">
+                <div class="form-group">
+                    <label for="noKK">No Kartu Keluarga</label>
+                    <input type="text" id="noKK" required>
+                </div>
+                <div class="form-group">
+                    <label for="kepalaKeluarga">Kepala Keluarga</label>
+                    <input type="text" id="kepalaKeluarga" required>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" id="alamat" required>
+                </div>
+                <div class="form-group">
+                    <label for="jumlahAnggota">Jumlah Anggota</label>
+                    <input type="number" id="jumlahAnggota" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="nomorTelepon">Nomor Telephone</label>
+                    <input type="text" id="nomorTelepon" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalTambahKK">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanTambahKK">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit KK -->
+    <div class="modal" id="editKKModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Kartu Keluarga</h2>
+            <form id="formEditKK">
+                <input type="hidden" id="editKKId">
+                <div class="form-group">
+                    <label for="editNoKK">No Kartu Keluarga</label>
+                    <input type="text" id="editNoKK" required>
+                </div>
+                <div class="form-group">
+                    <label for="editKepalaKeluarga">Kepala Keluarga</label>
+                    <input type="text" id="editKepalaKeluarga" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAlamat">Alamat</label>
+                    <input type="text" id="editAlamat" required>
+                </div>
+                <div class="form-group">
+                    <label for="editJumlahAnggota">Jumlah Anggota</label>
+                    <input type="number" id="editJumlahAnggota" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="editNomorTelepon">Nomor Telephone</label>
+                    <input type="text" id="editNomorTelepon" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalEditKK">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanEditKK">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Detail KK -->
+    <div class="modal" id="detailKKModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detail Kartu Keluarga</h2>
+            
+            <div class="detail-section">
+                <h3>Data Kepala Keluarga</h3>
+                <div class="head-info">
+                    <div class="avatar">👤</div>
+                    <div class="info-text">
+                        <h4 id="detailNamaKepala">Seful Rhoman</h4>
+                        <p>Kepala Keluarga</p>
+                        <p><span>📧</span> <span id="detailEmail">seful.rhoman@example.com</span></p>
+                        <p><span>📞</span> <span id="detailTelepon">+62 812 - 2309 - 1319</span></p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Informasi Kartu Keluarga</h4>
+                    <p><strong>No. KK :</strong> <span id="detailNoKK">21903U97197108</span></p>
+                    <p><strong>Alamat :</strong> <span id="detailAlamat">Blok A No.1, RT 03 / RW 06</span></p>
+                    <p><strong>Kelurahan :</strong> <span id="detailKelurahan">Karang Duren</span></p>
+                    <p><strong>Kecamatan :</strong> <span id="detailKecamatan">Sokaraja</span></p>
+                    <p><strong>Kabupaten :</strong> <span id="detailKabupaten">Banyumas</span></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="detail-section">
+                <h3>Anggota Keluarga</h3>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="avatar">👤</div>
+                        <div class="member-info">
+                            <h4>Nilam Cahya</h4>
+                            <p>Istri</p>
+                            <p>NIK: 3331311436373</p>
+                        </div>
+                        <div class="member-footer">
+                            <button class="btn-edit-member">Edit</button>
+                            <span>30 Tahun</span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="avatar">👤</div>
+                        <div class="member-info">
+                            <h4>Akim Leonard</h4>
+                            <p>Anak</p>
+                            <p>NIK: 3331311436373</p>
+                        </div>
+                        <div class="member-footer">
+                            <button class="btn-edit-member">Edit</button>
+                            <span>17 Tahun</span>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="avatar">👤</div>
+                        <div class="member-info">
+                            <h4>Farsya Sofia</h4>
+                            <p>Anak</p>
+                            <p>NIK: 3331311436373</p>
+                        </div>
+                        <div class="member-footer">
+                            <button class="btn-edit-member">Edit</button>
+                            <span>12 Tahun</span>
+                        </div>
+                    </div>
+                    <div class="add-member-card">
+                        <div class="plus-icon">+</div>
+                        <p>Tambah Anggota</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="detail-section">
+                <h3>Dokumen Keluarga</h3>
+                <div class="documents-grid">
+                    <div class="document-card">
+                        <div class="doc-icon">📄</div>
+                        <p>Kartu Keluarga</p>
+                    </div>
+                    <div class="document-card">
+                        <div class="doc-icon">📄</div>
+                        <p>Kartu Tanda Penduduk</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button type="button" class="btn-cancel" id="btnCloseDetail">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Anggota -->
+    <div class="modal" id="tambahAnggotaModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tambah Anggota Keluarga</h2>
+            <form id="formTambahAnggota">
+                <div class="form-group">
+                    <label for="namaAnggota">Nama</label>
+                    <input type="text" id="namaAnggota" required>
+                </div>
+                <div class="form-group">
+                    <label for="statusAnggota">Status</label>
+                    <input type="text" id="statusAnggota" required>
+                </div>
+                <div class="form-group">
+                    <label for="nikAnggota">NIK</label>
+                    <input type="text" id="nikAnggota" required>
+                </div>
+                <div class="form-group">
+                    <label for="usiaAnggota">Usia</label>
+                    <input type="number" id="usiaAnggota" min="0" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalTambahAnggota">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanTambahAnggota">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal" id="hapusModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yakin ingin menghapus item ini?</h2>
+            <div class="modal-buttons">
+                <button type="button" class="btn-ok" id="btnOkHapus">OK</button>
+                <button type="button" class="btn-cancel" id="btnBatalHapus">Batal</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

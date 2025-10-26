@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tanggalPermintaan">Tanggal Permintaan</label>
-                            <input type="date" id="tanggalPermintaan" required>
+                            <input type="text" id="tanggalPermintaan" placeholder="Contoh: 23/7/2025" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,50 +82,105 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr data-id="1">
                             <td>1</td>
                             <td>Ahmad Susanto</td>
                             <td>Surat Keterangan</td>
                             <td>23/7/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="1">Edit</button>
+                                <button class="btn-delete" data-id="1">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="2">
                             <td>2</td>
                             <td>Dewi Lestari</td>
                             <td>Surat Domisili</td>
                             <td>18/7/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="2">Edit</button>
+                                <button class="btn-delete" data-id="2">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="3">
                             <td>3</td>
                             <td>Budi Raharjo</td>
                             <td>Surat Izin Usaha</td>
                             <td>4/7/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="3">Edit</button>
+                                <button class="btn-delete" data-id="3">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="4">
                             <td>4</td>
                             <td>Siti Nurhaliza</td>
                             <td>Surat Pengantar</td>
                             <td>23/6/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="4">Edit</button>
+                                <button class="btn-delete" data-id="4">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
+    </div>
+
+    <!-- Modal Edit Surat -->
+    <div class="modal" id="editSuratModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Permintaan Surat</h2>
+            <form id="formEditSurat">
+                <input type="hidden" id="editSuratId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editNamaWarga">Nama Warga</label>
+                        <input type="text" id="editNamaWarga" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editNoKTP">No KTP</label>
+                        <input type="text" id="editNoKTP" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editJenisSurat">Jenis Surat</label>
+                        <input type="text" id="editJenisSurat" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTanggalPermintaan">Tanggal Permintaan</label>
+                        <input type="text" id="editTanggalPermintaan" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editTujuanSurat">Tujuan Pembuatan Surat</label>
+                    <textarea id="editTujuanSurat" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editCatatanTambahan">Catatan Tambahan</label>
+                    <textarea id="editCatatanTambahan" rows="3"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalEditSurat">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanEditSurat">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal" id="hapusSuratModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yakin ingin menghapus item ini?</h2>
+            <div class="modal-buttons">
+                <button type="button" class="btn-ok" id="btnOkHapusSurat">OK</button>
+                <button type="button" class="btn-cancel" id="btnBatalHapusSurat">Batal</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

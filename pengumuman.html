@@ -14,31 +14,17 @@
                 <div class="logo-circle">🏠</div>
                 <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
             </div>
-           <nav class="sidebar-menu">
-          <ul>
-            <li>
-              <a href="dashboard.html"><span>🏠</span> Dashboard</a>
-            </li>
-            <li>
-              <a href="data-warga.html"><span>👥</span> Data Warga</a>
-            </li>
-            <li>
-              <a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a>
-            </li>
-            <li>
-              <a href="keuangan.html"><span>💰</span> Keuangan</a>
-            </li>
-            <li>
-              <a href="kejadian.html"><span>ℹ️</span> Kejadian</a>
-            </li>
-            <li>
-              <a href="pengumuman.html"><span>📆</span> Pengumuman</a>
-            </li>
-            <li>
-              <a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a>
-            </li>
-          </ul>
-        </nav>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
+                    <li><a href="data-warga.html"><span>👥</span> Data Warga</a></li>
+                    <li><a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a></li>
+                    <li><a href="keuangan.html"><span>💰</span> Keuangan</a></li>
+                    <li><a href="kejadian.html"><span>ℹ️</span> Kejadian</a></li>
+                    <li><a href="pengumuman.html" class="active"><span>📆</span> Pengumuman</a></li>
+                    <li><a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <!-- Main Content -->
@@ -65,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tanggal">Tanggal</label>
-                            <input type="date" id="tanggal" required>
+                            <input type="text" id="tanggal" placeholder="Contoh: 23-7-2025" required>
                         </div>
                         <button type="submit" class="btn-primary">Tambah</button>
                     </form>
@@ -73,38 +59,81 @@
 
                 <!-- Daftar Pengumuman -->
                 <div class="announcement-list">
-                    <div class="announcement-card">
+                    <div class="announcement-card" data-id="1">
                         <h2>Bersih Lingkungan</h2>
                         <p class="announcement-meta">Kegiatan - 23-7-2025</p>
                         <p>Kegiatan bersih-bersih jalan dan area umum RT dari pukul 08.00 pagi. Semua warga diharapkan ikut serta dengan membawa alat kebersihan.</p>
                         <div class="card-actions">
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Hapus</button>
+                            <button class="btn-edit" data-id="1">Edit</button>
+                            <button class="btn-delete" data-id="1">Hapus</button>
                         </div>
                     </div>
 
-                    <div class="announcement-card">
+                    <div class="announcement-card" data-id="2">
                         <h2>Pembatasan Jam Malam</h2>
                         <p class="announcement-meta">Pengumuman - 19-7-2025</p>
                         <p>Mulai hari ini, lampu depan rumah harus dimatikan pukul 22.00 malam untuk menghemat energi dan menjaga ketenangan lingkungan</p>
                         <div class="card-actions">
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Hapus</button>
+                            <button class="btn-edit" data-id="2">Edit</button>
+                            <button class="btn-delete" data-id="2">Hapus</button>
                         </div>
                     </div>
 
-                    <div class="announcement-card">
+                    <div class="announcement-card" data-id="3">
                         <h2>Posyandu Balita</h2>
                         <p class="announcement-meta">Kegiatan - 10-7-2025</p>
                         <p>Kegiatan Posyandu Balita akan dilaksanakan mulai pukul 08.00 pagi di balai RT. Diharapkan para orang tua membawa balita untuk mendapatkan pelayanan kesehatan, penimbangan, dan imunisasi.</p>
                         <div class="card-actions">
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Hapus</button>
+                            <button class="btn-edit" data-id="3">Edit</button>
+                            <button class="btn-delete" data-id="3">Hapus</button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Modal Edit Pengumuman -->
+    <div class="modal" id="editPengumumanModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Pengumuman</h2>
+            <form id="formEditPengumuman">
+                <input type="hidden" id="editPengumumanId">
+                <div class="form-group">
+                    <label for="editJenis">Jenis</label>
+                    <input type="text" id="editJenis" required>
+                </div>
+                <div class="form-group">
+                    <label for="editJudul">Judul</label>
+                    <input type="text" id="editJudul" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDeskripsi">Deskripsi</label>
+                    <textarea id="editDeskripsi" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTanggal">Tanggal</label>
+                    <input type="text" id="editTanggal" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalEditPengumuman">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanEditPengumuman">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal" id="hapusPengumumanModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yakin ingin menghapus item ini?</h2>
+            <div class="modal-buttons">
+                <button type="button" class="btn-ok" id="btnOkHapusPengumuman">OK</button>
+                <button type="button" class="btn-cancel" id="btnBatalHapusPengumuman">Batal</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

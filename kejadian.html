@@ -14,38 +14,24 @@
                 <div class="logo-circle">🏠</div>
                 <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
             </div>
-             <nav class="sidebar-menu">
-          <ul>
-            <li>
-              <a href="dashboard.html"><span>🏠</span> Dashboard</a>
-            </li>
-            <li>
-              <a href="data-warga.html"><span>👥</span> Data Warga</a>
-            </li>
-            <li>
-              <a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a>
-            </li>
-            <li>
-              <a href="keuangan.html"><span>💰</span> Keuangan</a>
-            </li>
-            <li>
-              <a href="kejadian.html"><span>ℹ️</span> Kejadian</a>
-            </li>
-            <li>
-              <a href="pengumuman.html"><span>📆</span> Pengumuman</a>
-            </li>
-            <li>
-              <a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a>
-            </li>
-          </ul>
-        </nav>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
+                    <li><a href="data-warga.html"><span>👥</span> Data Warga</a></li>
+                    <li><a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a></li>
+                    <li><a href="keuangan.html"><span>💰</span> Keuangan</a></li>
+                    <li><a href="kejadian.html" class="active"><span>ℹ️</span> Kejadian</a></li>
+                    <li><a href="pengumuman.html"><span>📆</span> Pengumuman</a></li>
+                    <li><a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <div class="page-header">
                 <h1>Kelola Kejadian</h1>
-                <button class="btn-primary">Tambah Kejadian</button>
+                <button class="btn-primary" id="btnTambahKejadian">Tambah Kejadian</button>
             </div>
 
             <div class="search-bar">
@@ -65,50 +51,115 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr data-id="1">
                             <td>1</td>
                             <td>Gotong Royong Kebersihan Lingkungan</td>
                             <td>Kegiatan membersihkan jalan dan got di area RT dengan melibatkan warga setempat.</td>
                             <td>23/7/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="1">Edit</button>
+                                <button class="btn-delete" data-id="1">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="2">
                             <td>2</td>
                             <td>Laporan Kejadian Kecelakaan</td>
                             <td>Kegiatan kecelakaan motor di depan rumah nomor 10, korban meninggal dunia.</td>
                             <td>18/7/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="2">Edit</button>
+                                <button class="btn-delete" data-id="2">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="3">
                             <td>3</td>
                             <td>Program Posyandu Lansia</td>
                             <td>Kegiatan pemeriksaan kesehatan rutin untuk para lansia di balai RT.</td>
                             <td>4/7/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="3">Edit</button>
+                                <button class="btn-delete" data-id="3">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="4">
                             <td>4</td>
                             <td>Pengaduan Kebisingan Akim</td>
                             <td>Keluhan warga tentang bisingnya kegiatan pesta di malam hari tanpa izin.</td>
                             <td>23/6/2025</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="4">Edit</button>
+                                <button class="btn-delete" data-id="4">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
+    </div>
+
+    <!-- Modal Tambah Kejadian -->
+    <div class="modal" id="tambahKejadianModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tambah Kejadian</h2>
+            <form id="formTambahKejadian">
+                <div class="form-group">
+                    <label for="namaKejadian">Nama Kejadian</label>
+                    <input type="text" id="namaKejadian" required>
+                </div>
+                <div class="form-group">
+                    <label for="deskripsi">Deskripsi</label>
+                    <textarea id="deskripsi" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="text" id="tanggal" placeholder="Contoh: 23/7/2025" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalTambahKejadian">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanTambahKejadian">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Kejadian -->
+    <div class="modal" id="editKejadianModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Kejadian</h2>
+            <form id="formEditKejadian">
+                <input type="hidden" id="editKejadianId">
+                <div class="form-group">
+                    <label for="editNamaKejadian">Nama Kejadian</label>
+                    <input type="text" id="editNamaKejadian" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDeskripsi">Deskripsi</label>
+                    <textarea id="editDeskripsi" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTanggal">Tanggal</label>
+                    <input type="text" id="editTanggal" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalEditKejadian">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanEditKejadian">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal" id="hapusKejadianModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yakin ingin menghapus item ini?</h2>
+            <div class="modal-buttons">
+                <button type="button" class="btn-ok" id="btnOkHapusKejadian">OK</button>
+                <button type="button" class="btn-cancel" id="btnBatalHapusKejadian">Batal</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
