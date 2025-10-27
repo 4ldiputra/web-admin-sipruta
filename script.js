@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             if (username === 'admin' && password === 'password') {
+                // Simpan status login
+                localStorage.setItem('isLoggedIn', 'true');
                 alert('Login berhasil!');
                 window.location.href = 'dashboard.html';
             } else {
@@ -15,116 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === MODAL DATA WARGA ===
-// Tambah Warga
-const btnTambahWarga = document.getElementById('btnTambahWarga');
-const tambahWargaModal = document.getElementById('tambahWargaModal');
-const btnBatalTambahWarga = document.getElementById('btnBatalTambahWarga');
-const btnSimpanTambahWarga = document.getElementById('btnSimpanTambahWarga');
-const formTambahWarga = document.getElementById('formTambahWarga');
-
-if (btnTambahWarga && tambahWargaModal) {
-    btnTambahWarga.addEventListener('click', function () {
-        tambahWargaModal.style.display = 'block';
-    });
-}
-
-if (btnBatalTambahWarga) {
-    btnBatalTambahWarga.addEventListener('click', function () {
-        tambahWargaModal.style.display = 'none';
-        formTambahWarga.reset();
-    });
-}
-
-if (formTambahWarga) {
-    formTambahWarga.addEventListener('submit', function (e) {
-        e.preventDefault();
-        alert('✅ Data warga baru berhasil ditambahkan!');
-        tambahWargaModal.style.display = 'none';
-        formTambahWarga.reset();
-    });
-}
-
-// Edit Warga
-const editWargaModal = document.getElementById('editWargaModal');
-const btnBatalEditWarga = document.getElementById('btnBatalEditWarga');
-const btnSimpanEditWarga = document.getElementById('btnSimpanEditWarga');
-const formEditWarga = document.getElementById('formEditWarga');
-
-if (btnBatalEditWarga) {
-    btnBatalEditWarga.addEventListener('click', function () {
-        editWargaModal.style.display = 'none';
-        formEditWarga.reset();
-    });
-}
-
-if (formEditWarga) {
-    formEditWarga.addEventListener('submit', function (e) {
-        e.preventDefault();
-        alert('✅ Data warga berhasil diperbarui!');
-        editWargaModal.style.display = 'none';
-        formEditWarga.reset();
-    });
-}
-
-// Hapus Warga
-const hapusWargaModal = document.getElementById('hapusWargaModal');
-const btnOkHapusWarga = document.getElementById('btnOkHapusWarga');
-const btnBatalHapusWarga = document.getElementById('btnBatalHapusWarga');
-
-if (btnBatalHapusWarga) {
-    btnBatalHapusWarga.addEventListener('click', function () {
-        hapusWargaModal.style.display = 'none';
-    });
-}
-
-if (btnOkHapusWarga) {
-    btnOkHapusWarga.addEventListener('click', function () {
-        alert('🗑️ Data warga berhasil dihapus!');
-        hapusWargaModal.style.display = 'none';
-    });
-}
-
-// Fungsi untuk membuka modal edit (Warga)
-function openEditWargaModal(id) {
-    const row = document.querySelector(`tr[data-id="${id}"]`);
-    const cells = row.querySelectorAll('td');
-    
-    document.getElementById('editWargaId').value = id;
-    document.getElementById('editNamaLengkap').value = cells[1].textContent.trim();
-    document.getElementById('editNik').value = cells[2].textContent.trim();
-    document.getElementById('editJenisKelamin').value = cells[3].textContent.trim();
-    document.getElementById('editTempatTanggalLahir').value = cells[4].textContent.trim();
-    document.getElementById('editAgama').value = cells[5].textContent.trim();
-    document.getElementById('editAlamat').value = cells[6].textContent.trim();
-
-    editWargaModal.style.display = 'block';
-}
-
-// Fungsi untuk membuka modal hapus (Warga)
-function openHapusWargaModal(id) {
-    hapusWargaModal.style.display = 'block';
-    hapusWargaModal.dataset.id = id;
-}
-
-// Event listener untuk tombol di tabel
-document.addEventListener('click', function (e) {
-    // Edit Warga
-    if (e.target.classList.contains('btn-edit')) {
-        const page = window.location.pathname.split('/').pop();
-        if (page === 'data-warga.html') {
-            openEditWargaModal(e.target.dataset.id);
-        }
-    }
-
-    // Hapus Warga
-    if (e.target.classList.contains('btn-delete')) {
-        const page = window.location.pathname.split('/').pop();
-        if (page === 'data-warga.html') {
-            openHapusWargaModal(e.target.dataset.id);
-        }
-    }
-});
+    // === CEK LOGIN UNTUK HALAMAN ADMIN ===
+    // Proteksi ini di-handle di setiap file HTML, bukan di sini
 
     // === SIDEBAR ACTIVE ===
     const currentPath = window.location.pathname.split('/').pop();
@@ -134,6 +28,76 @@ document.addEventListener('click', function (e) {
             link.classList.add('active');
         }
     });
+
+    // === MODAL DATA WARGA ===
+    // Tambah Warga
+    const btnTambahWarga = document.getElementById('btnTambahWarga');
+    const tambahWargaModal = document.getElementById('tambahWargaModal');
+    const btnBatalTambahWarga = document.getElementById('btnBatalTambahWarga');
+    const btnSimpanTambahWarga = document.getElementById('btnSimpanTambahWarga');
+    const formTambahWarga = document.getElementById('formTambahWarga');
+
+    if (btnTambahWarga && tambahWargaModal) {
+        btnTambahWarga.addEventListener('click', function () {
+            tambahWargaModal.style.display = 'block';
+        });
+    }
+
+    if (btnBatalTambahWarga) {
+        btnBatalTambahWarga.addEventListener('click', function () {
+            tambahWargaModal.style.display = 'none';
+            formTambahWarga.reset();
+        });
+    }
+
+    if (formTambahWarga) {
+        formTambahWarga.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('✅ Data warga baru berhasil ditambahkan!');
+            tambahWargaModal.style.display = 'none';
+            formTambahWarga.reset();
+        });
+    }
+
+    // Edit Warga
+    const editWargaModal = document.getElementById('editWargaModal');
+    const btnBatalEditWarga = document.getElementById('btnBatalEditWarga');
+    const btnSimpanEditWarga = document.getElementById('btnSimpanEditWarga');
+    const formEditWarga = document.getElementById('formEditWarga');
+
+    if (btnBatalEditWarga) {
+        btnBatalEditWarga.addEventListener('click', function () {
+            editWargaModal.style.display = 'none';
+            formEditWarga.reset();
+        });
+    }
+
+    if (formEditWarga) {
+        formEditWarga.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('✅ Data warga berhasil diperbarui!');
+            editWargaModal.style.display = 'none';
+            formEditWarga.reset();
+        });
+    }
+
+    // Hapus Warga
+    const hapusWargaModal = document.getElementById('hapusWargaModal');
+    const btnOkHapusWarga = document.getElementById('btnOkHapusWarga');
+    const btnBatalHapusWarga = document.getElementById('btnBatalHapusWarga');
+
+    if (btnBatalHapusWarga) {
+        btnBatalHapusWarga.addEventListener('click', function () {
+            hapusWargaModal.style.display = 'none';
+        });
+    }
+
+    if (btnOkHapusWarga) {
+        btnOkHapusWarga.addEventListener('click', function () {
+            alert('🗑️ Data warga berhasil dihapus!');
+            hapusWargaModal.style.display = 'none';
+        });
+    }
 
     // === MODAL TAMBAH KK ===
     const btnTambahKK = document.getElementById('btnTambahKK');
@@ -226,7 +190,7 @@ document.addEventListener('click', function (e) {
         });
     }
 
-    // === MODAL HAPUS ===
+    // === MODAL HAPUS KK ===
     const hapusModal = document.getElementById('hapusModal');
     const btnOkHapus = document.getElementById('btnOkHapus');
     const btnBatalHapus = document.getElementById('btnBatalHapus');
@@ -416,17 +380,132 @@ document.addEventListener('click', function (e) {
         });
     }
 
-    // === EVENT LISTENER UNTUK TOMBOL DI TABEL ===
+    // === FUNGSI UNTUK MEMBUKA MODAL ===
+    // Detail KK
+    function openDetailModal(id) {
+        document.getElementById('detailNamaKepala').textContent = 'Seful Rhoman';
+        document.getElementById('detailEmail').textContent = 'seful.rhoman@example.com';
+        document.getElementById('detailTelepon').textContent = '+62 812 - 2309 - 1319';
+        document.getElementById('detailNoKK').textContent = '21903U97197108';
+        document.getElementById('detailAlamat').textContent = 'Blok A No.1, RT 03 / RW 06';
+        document.getElementById('detailKelurahan').textContent = 'Karang Duren';
+        document.getElementById('detailKecamatan').textContent = 'Sokaraja';
+        document.getElementById('detailKabupaten').textContent = 'Banyumas';
+        detailKKModal.style.display = 'block';
+    }
+
+    // Edit Warga
+    function openEditWargaModal(id) {
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editWargaId').value = id;
+        document.getElementById('editNamaLengkap').value = cells[1].textContent.trim();
+        document.getElementById('editNik').value = cells[2].textContent.trim();
+        document.getElementById('editJenisKelamin').value = cells[3].textContent.trim();
+        document.getElementById('editTempatTanggalLahir').value = cells[4].textContent.trim();
+        document.getElementById('editAgama').value = cells[5].textContent.trim();
+        document.getElementById('editAlamat').value = cells[6].textContent.trim();
+        editWargaModal.style.display = 'block';
+    }
+
+    // Hapus Warga
+    function openHapusWargaModal(id) {
+        hapusWargaModal.style.display = 'block';
+        hapusWargaModal.dataset.id = id;
+    }
+
+    // Edit KK
+    function openEditModal(id) {
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editKKId').value = id;
+        document.getElementById('editNoKK').value = cells[1].textContent.trim();
+        document.getElementById('editKepalaKeluarga').value = cells[2].textContent.trim();
+        document.getElementById('editAlamat').value = cells[3].textContent.trim();
+        document.getElementById('editJumlahAnggota').value = cells[4].textContent.trim();
+        document.getElementById('editNomorTelepon').value = '';
+        document.getElementById('editEmail').value = '';
+        editKKModal.style.display = 'block';
+    }
+
+    // Hapus KK
+    function openHapusModal(id) {
+        hapusModal.style.display = 'block';
+        hapusModal.dataset.id = id;
+    }
+
+    // Edit Kejadian
+    function openEditKejadianModal(id) {
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editKejadianId').value = id;
+        document.getElementById('editNamaKejadian').value = cells[1].textContent.trim();
+        document.getElementById('editDeskripsi').value = cells[2].textContent.trim();
+        document.getElementById('editTanggal').value = cells[3].textContent.trim();
+        editKejadianModal.style.display = 'block';
+    }
+
+    // Hapus Kejadian
+    function openHapusKejadianModal(id) {
+        hapusKejadianModal.style.display = 'block';
+        hapusKejadianModal.dataset.id = id;
+    }
+
+    // Edit Pengumuman
+    function openEditPengumumanModal(id) {
+        const card = document.querySelector(`.announcement-card[data-id="${id}"]`);
+        if (card) {
+            const title = card.querySelector('h2').textContent;
+            const meta = card.querySelector('.announcement-meta').textContent;
+            const desc = card.querySelector('p').textContent;
+            document.getElementById('editPengumumanId').value = id;
+            document.getElementById('editJenis').value = meta.includes('Kegiatan') ? 'Kegiatan' : 'Pengumuman';
+            document.getElementById('editJudul').value = title;
+            document.getElementById('editDeskripsi').value = desc;
+            document.getElementById('editTanggal').value = meta.split('-')[1].trim();
+            editPengumumanModal.style.display = 'block';
+        }
+    }
+
+    // Hapus Pengumuman
+    function openHapusPengumumanModal(id) {
+        hapusPengumumanModal.style.display = 'block';
+        hapusPengumumanModal.dataset.id = id;
+    }
+
+    // Edit Surat
+    function openEditSuratModal(id) {
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editSuratId').value = id;
+        document.getElementById('editNamaWarga').value = cells[1].textContent.trim();
+        document.getElementById('editNoKTP').value = '3302213224211';
+        document.getElementById('editJenisSurat').value = cells[2].textContent.trim();
+        document.getElementById('editTanggalPermintaan').value = cells[3].textContent.trim();
+        document.getElementById('editTujuanSurat').value = 'Sebagai syarat administrasi perpanjangan kontrak kerja';
+        document.getElementById('editCatatanTambahan').value = 'Harap dicetak rangkap dua';
+        editSuratModal.style.display = 'block';
+    }
+
+    // Hapus Surat
+    function openHapusSuratModal(id) {
+        hapusSuratModal.style.display = 'block';
+        hapusSuratModal.dataset.id = id;
+    }
+
+    // === EVENT LISTENER GLOBAL UNTUK TOMBOL ===
     document.addEventListener('click', function (e) {
-        // Detail (KK)
+        // Detail KK
         if (e.target.classList.contains('btn-detail')) {
             openDetailModal(e.target.dataset.id);
         }
 
-        // Edit (KK, Kejadian, Pengumuman, Surat)
+        // Edit
         if (e.target.classList.contains('btn-edit')) {
             const page = window.location.pathname.split('/').pop();
-            if (page === 'kartu-keluarga.html') {
+            if (page === 'data-warga.html') {
+                openEditWargaModal(e.target.dataset.id);
+            } else if (page === 'kartu-keluarga.html') {
                 openEditModal(e.target.dataset.id);
             } else if (page === 'kejadian.html') {
                 openEditKejadianModal(e.target.dataset.id);
@@ -437,10 +516,12 @@ document.addEventListener('click', function (e) {
             }
         }
 
-        // Hapus (KK, Kejadian, Pengumuman, Surat)
+        // Hapus
         if (e.target.classList.contains('btn-delete')) {
             const page = window.location.pathname.split('/').pop();
-            if (page === 'kartu-keluarga.html') {
+            if (page === 'data-warga.html') {
+                openHapusWargaModal(e.target.dataset.id);
+            } else if (page === 'kartu-keluarga.html') {
                 openHapusModal(e.target.dataset.id);
             } else if (page === 'kejadian.html') {
                 openHapusKejadianModal(e.target.dataset.id);
@@ -452,170 +533,54 @@ document.addEventListener('click', function (e) {
         }
     });
 
-    // Fungsi untuk membuka modal detail (KK)
-    function openDetailModal(id) {
-        document.getElementById('detailNamaKepala').textContent = 'Seful Rhoman';
-        document.getElementById('detailEmail').textContent = 'seful.rhoman@example.com';
-        document.getElementById('detailTelepon').textContent = '+62 812 - 2309 - 1319';
-        document.getElementById('detailNoKK').textContent = '21903U97197108';
-        document.getElementById('detailAlamat').textContent = 'Blok A No.1, RT 03 / RW 06';
-        document.getElementById('detailKelurahan').textContent = 'Karang Duren';
-        document.getElementById('detailKecamatan').textContent = 'Sokaraja';
-        document.getElementById('detailKabupaten').textContent = 'Banyumas';
-
-        detailKKModal.style.display = 'block';
-    }
-
-    // Fungsi untuk membuka modal edit (KK)
-    function openEditModal(id) {
-        const row = document.querySelector(`tr[data-id="${id}"]`);
-        const cells = row.querySelectorAll('td');
-        
-        document.getElementById('editKKId').value = id;
-        document.getElementById('editNoKK').value = cells[1].textContent.trim();
-        document.getElementById('editKepalaKeluarga').value = cells[2].textContent.trim();
-        document.getElementById('editAlamat').value = cells[3].textContent.trim();
-        document.getElementById('editJumlahAnggota').value = cells[4].textContent.trim();
-        document.getElementById('editNomorTelepon').value = '';
-        document.getElementById('editEmail').value = '';
-
-        editKKModal.style.display = 'block';
-    }
-
-    // Fungsi untuk membuka modal hapus (KK)
-    function openHapusModal(id) {
-        hapusModal.style.display = 'block';
-        hapusModal.dataset.id = id;
-    }
-
-    // Fungsi untuk membuka modal edit (Kejadian)
-    function openEditKejadianModal(id) {
-        const row = document.querySelector(`tr[data-id="${id}"]`);
-        const cells = row.querySelectorAll('td');
-        
-        document.getElementById('editKejadianId').value = id;
-        document.getElementById('editNamaKejadian').value = cells[1].textContent.trim();
-        document.getElementById('editDeskripsi').value = cells[2].textContent.trim();
-        document.getElementById('editTanggal').value = cells[3].textContent.trim();
-
-        editKejadianModal.style.display = 'block';
-    }
-
-    // Fungsi untuk membuka modal hapus (Kejadian)
-    function openHapusKejadianModal(id) {
-        hapusKejadianModal.style.display = 'block';
-        hapusKejadianModal.dataset.id = id;
-    }
-
-    // Fungsi untuk membuka modal edit (Pengumuman)
-    function openEditPengumumanModal(id) {
-        const card = document.querySelector(`.announcement-card[data-id="${id}"]`);
-        if (card) {
-            const title = card.querySelector('h2').textContent;
-            const meta = card.querySelector('.announcement-meta').textContent;
-            const desc = card.querySelector('p').textContent;
-
-            // Isi form edit
-            document.getElementById('editPengumumanId').value = id;
-            document.getElementById('editJenis').value = meta.includes('Kegiatan') ? 'Kegiatan' : 'Pengumuman';
-            document.getElementById('editJudul').value = title;
-            document.getElementById('editDeskripsi').value = desc;
-            document.getElementById('editTanggal').value = meta.split('-')[1].trim();
-
-            editPengumumanModal.style.display = 'block';
-        }
-    }
-
-    // Fungsi untuk membuka modal hapus (Pengumuman)
-    function openHapusPengumumanModal(id) {
-        hapusPengumumanModal.style.display = 'block';
-        hapusPengumumanModal.dataset.id = id;
-    }
-
-    // Fungsi untuk membuka modal edit (Surat)
-    function openEditSuratModal(id) {
-        const row = document.querySelector(`tr[data-id="${id}"]`);
-        const cells = row.querySelectorAll('td');
-        
-        document.getElementById('editSuratId').value = id;
-        document.getElementById('editNamaWarga').value = cells[1].textContent.trim();
-        document.getElementById('editNoKTP').value = '3302213224211'; // Contoh data
-        document.getElementById('editJenisSurat').value = cells[2].textContent.trim();
-        document.getElementById('editTanggalPermintaan').value = cells[3].textContent.trim();
-        document.getElementById('editTujuanSurat').value = 'Sebagai syarat administrasi perpanjangan kontrak kerja';
-        document.getElementById('editCatatanTambahan').value = 'Harap dicetak rangkap dua';
-
-        editSuratModal.style.display = 'block';
-    }
-
-    // Fungsi untuk membuka modal hapus (Surat)
-    function openHapusSuratModal(id) {
-        hapusSuratModal.style.display = 'block';
-        hapusSuratModal.dataset.id = id;
-    }
-
-    // Tutup modal saat klik di luar
+    // === TUTUP MODAL SAAT KLIK DI LUAR ===
     window.onclick = function (event) {
-        if (event.target === tambahKKModal) {
-            tambahKKModal.style.display = 'none';
-            formTambahKK.reset();
-        }
-        if (event.target === editKKModal) {
-            editKKModal.style.display = 'none';
-            formEditKK.reset();
-        }
-        if (event.target === detailKKModal) {
-            detailKKModal.style.display = 'none';
-        }
-        if (event.target === tambahAnggotaModal) {
-            tambahAnggotaModal.style.display = 'none';
-            formTambahAnggota.reset();
-        }
-        if (event.target === hapusModal) {
-            hapusModal.style.display = 'none';
-        }
-        if (event.target === tambahKejadianModal) {
-            tambahKejadianModal.style.display = 'none';
-            formTambahKejadian.reset();
-        }
-        if (event.target === editKejadianModal) {
-            editKejadianModal.style.display = 'none';
-            formEditKejadian.reset();
-        }
-        if (event.target === hapusKejadianModal) {
-            hapusKejadianModal.style.display = 'none';
-        }
-        if (event.target === editPengumumanModal) {
-            editPengumumanModal.style.display = 'none';
-            formEditPengumuman.reset();
-        }
-        if (event.target === hapusPengumumanModal) {
-            hapusPengumumanModal.style.display = 'none';
-        }
-        if (event.target === editSuratModal) {
-            editSuratModal.style.display = 'none';
-            formEditSurat.reset();
-        }
-        if (event.target === hapusSuratModal) {
-            hapusSuratModal.style.display = 'none';
-        }
+        const modals = [
+            { modal: 'tambahWargaModal', form: 'formTambahWarga' },
+            { modal: 'editWargaModal', form: 'formEditWarga' },
+            { modal: 'hapusWargaModal' },
+            { modal: 'tambahKKModal', form: 'formTambahKK' },
+            { modal: 'editKKModal', form: 'formEditKK' },
+            { modal: 'detailKKModal' },
+            { modal: 'tambahAnggotaModal', form: 'formTambahAnggota' },
+            { modal: 'hapusModal' },
+            { modal: 'tambahKejadianModal', form: 'formTambahKejadian' },
+            { modal: 'editKejadianModal', form: 'formEditKejadian' },
+            { modal: 'hapusKejadianModal' },
+            { modal: 'editPengumumanModal', form: 'formEditPengumuman' },
+            { modal: 'hapusPengumumanModal' },
+            { modal: 'editSuratModal', form: 'formEditSurat' },
+            { modal: 'hapusSuratModal' }
+        ];
+
+        modals.forEach(item => {
+            const modal = document.getElementById(item.modal);
+            if (modal && event.target === modal) {
+                modal.style.display = 'none';
+                if (item.form) {
+                    document.getElementById(item.form)?.reset();
+                }
+            }
+        });
     };
 
-    // Tutup modal saat klik X
+    // === TUTUP MODAL SAAT KLIK X ===
     document.querySelectorAll('.close').forEach(btn => {
         btn.addEventListener('click', function () {
             const modal = this.closest('.modal');
             modal.style.display = 'none';
-            const formId = {
+            const formMap = {
+                'tambahWargaModal': 'formTambahWarga',
+                'editWargaModal': 'formEditWarga',
                 'tambahKKModal': 'formTambahKK',
                 'editKKModal': 'formEditKK',
                 'tambahAnggotaModal': 'formTambahAnggota',
                 'tambahKejadianModal': 'formTambahKejadian',
                 'editKejadianModal': 'formEditKejadian',
                 'editPengumumanModal': 'formEditPengumuman',
-                'hapusPengumumanModal': 'announcementForm',
                 'editSuratModal': 'formEditSurat'
-            }[modal.id];
+            };
+            const formId = formMap[modal.id];
             if (formId) {
                 document.getElementById(formId)?.reset();
             }

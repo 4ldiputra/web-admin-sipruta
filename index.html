@@ -3,219 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIPRUTA - Kartu Keluarga</title>
+    <title>SIPRUTA - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-circle">🏠</div>
-                <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
-            </div>
-            <nav class="sidebar-menu">
-                <ul>
-                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
-                    <li><a href="data-warga.html"><span>👥</span> Data Warga</a></li>
-                    <li><a href="kartu-keluarga.html" class="active"><span>📁</span> Kartu Keluarga</a></li>
-                    <li><a href="keuangan.html"><span>💰</span> Keuangan</a></li>
-                    <li><a href="kejadian.html"><span>ℹ️</span> Kejadian</a></li>
-                    <li><a href="pengumuman.html"><span>📆</span> Pengumuman</a></li>
-                    <li><a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <h1>Kartu Keluarga</h1>
-                <button class="btn-primary" id="btnTambahKK">Tambah KK Baru</button>
-            </div>
-
-            <!-- Statistik KK -->
-            <div class="kk-stats">
-                <div class="stat-box">
-                    <h3>Total Keluarga</h3>
-                    <p>65</p>
-                </div>
-                <div class="stat-box">
-                    <h3>Total Anggota</h3>
-                    <p>234</p>
-                </div>
-            </div>
-
-            <div class="search-bar">
-                <input type="text" id="searchKK" placeholder="Cari Keterangan......">
-                <button class="btn-search">Cari</button>
-            </div>
-
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>No KK</th>
-                            <th>Kepala Keluarga</th>
-                            <th>Alamat</th>
-                            <th>Jumlah Anggota</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-id="1">
-                            <td>1</td>
-                            <td>33108164109602</td>
-                            <td>Seful Rhoman</td>
-                            <td>Blok A, No 1</td>
-                            <td>4</td>
-                            <td>
-                                <button class="btn-detail" data-id="1">Detail</button>
-                                <button class="btn-edit" data-id="1">Edit</button>
-                                <button class="btn-delete" data-id="1">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr data-id="2">
-                            <td>2</td>
-                            <td>33108164109602</td>
-                            <td>Rojali Siregar</td>
-                            <td>Blok C, No 12</td>
-                            <td>4</td>
-                            <td>
-                                <button class="btn-detail" data-id="2">Detail</button>
-                                <button class="btn-edit" data-id="2">Edit</button>
-                                <button class="btn-delete" data-id="2">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr data-id="3">
-                            <td>3</td>
-                            <td>33108164109602</td>
-                            <td>Joseph Akim</td>
-                            <td>Blok C, No 13</td>
-                            <td>2</td>
-                            <td>
-                                <button class="btn-detail" data-id="3">Detail</button>
-                                <button class="btn-edit" data-id="3">Edit</button>
-                                <button class="btn-delete" data-id="3">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr data-id="4">
-                            <td>4</td>
-                            <td>33108164109602</td>
-                            <td>Hilal Fahrizal</td>
-                            <td>Blok B, No 7</td>
-                            <td>2</td>
-                            <td>
-                                <button class="btn-detail" data-id="4">Detail</button>
-                                <button class="btn-edit" data-id="4">Edit</button>
-                                <button class="btn-delete" data-id="4">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr data-id="5">
-                            <td>5</td>
-                            <td>33108164109602</td>
-                            <td>Goendoel Subroto</td>
-                            <td>Blok D, No 3</td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn-detail" data-id="5">Detail</button>
-                                <button class="btn-edit" data-id="5">Edit</button>
-                                <button class="btn-delete" data-id="5">Hapus</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
-
-    <!-- Modal Tambah KK Baru -->
-    <div class="modal" id="tambahKKModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Tambah KK Baru</h2>
-            <form id="formTambahKK">
-                <div class="form-group">
-                    <label for="noKK">No Kartu Keluarga</label>
-                    <input type="text" id="noKK" required>
-                </div>
-                <div class="form-group">
-                    <label for="kepalaKeluarga">Kepala Keluarga</label>
-                    <input type="text" id="kepalaKeluarga" required>
-                </div>
-                <div class="form-group">
-                    <label for="alamat">Alamat</label>
-                    <input type="text" id="alamat" required>
-                </div>
-                <div class="form-group">
-                    <label for="jumlahAnggota">Jumlah Anggota</label>
-                    <input type="number" id="jumlahAnggota" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="nomorTelepon">Nomor Telephone</label>
-                    <input type="text" id="nomorTelepon" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="button" class="btn-cancel" id="btnBatalTambahKK">Batal</button>
-                    <button type="submit" class="btn-save" id="btnSimpanTambahKK">Simpan</button>
-                </div>
-            </form>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="https://via.placeholder.com/50" alt="Logo SIPRUTA" class="logo">
+            <h1>SIPRUTA (Sistem Informasi Rukun Tetangga)</h1>
         </div>
-    </div>
-
-    <!-- Modal Edit KK -->
-    <div class="modal" id="editKKModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Edit Kartu Keluarga</h2>
-            <form id="formEditKK">
-                <input type="hidden" id="editKKId">
-                <div class="form-group">
-                    <label for="editNoKK">No Kartu Keluarga</label>
-                    <input type="text" id="editNoKK" required>
-                </div>
-                <div class="form-group">
-                    <label for="editKepalaKeluarga">Kepala Keluarga</label>
-                    <input type="text" id="editKepalaKeluarga" required>
-                </div>
-                <div class="form-group">
-                    <label for="editAlamat">Alamat</label>
-                    <input type="text" id="editAlamat" required>
-                </div>
-                <div class="form-group">
-                    <label for="editJumlahAnggota">Jumlah Anggota</label>
-                    <input type="number" id="editJumlahAnggota" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="editNomorTelepon">Nomor Telephone</label>
-                    <input type="text" id="editNomorTelepon" required>
-                </div>
-                <div class="form-group">
-                    <label for="editEmail">Email</label>
-                    <input type="email" id="editEmail" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="button" class="btn-cancel" id="btnBatalEditKK">Batal</button>
-                    <button type="submit" class="btn-save" id="btnSimpanEditKK">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal Konfirmasi Hapus -->
-    <div class="modal" id="hapusModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Yakin ingin menghapus item ini?</h2>
-            <div class="modal-buttons">
-                <button type="button" class="btn-ok" id="btnOkHapus">OK</button>
-                <button type="button" class="btn-cancel" id="btnBatalHapus">Batal</button>
+        <div class="login-box">
+            <div class="login-title">
+                <h2>ADMIN LOGIN</h2>
+                <p>Hello there, Sign in and start managing your website</p>
             </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <div class="input-with-icon">
+                        <input type="text" id="username" placeholder="Masukkan username" required>
+                        <span class="icon">👤</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="password" placeholder="Masukkan password" required>
+                        <span class="icon">🔒</span>
+                    </div>
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
         </div>
     </div>
 
