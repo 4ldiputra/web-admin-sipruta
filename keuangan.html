@@ -11,64 +11,59 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <div class="logo-circle">🏠</div>
+               <div class="logo-circle"><img src="images/logo_admin.png" alt=""></div>
                 <h1>SIPRUTA<br>(Sistem Pencatatan Informasi Rukun Tetangga)</h1>
             </div>
-             <nav class="sidebar-menu">
-          <ul>
-            <li>
-              <a href="dashboard.html"><span>🏠</span> Dashboard</a>
-            </li>
-            <li>
-              <a href="data-warga.html"><span>👥</span> Data Warga</a>
-            </li>
-            <li>
-              <a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a>
-            </li>
-            <li>
-              <a href="keuangan.html"><span>💰</span> Keuangan</a>
-            </li>
-            <li>
-              <a href="kejadian.html"><span>ℹ️</span> Kejadian</a>
-            </li>
-            <li>
-              <a href="pengumuman.html"><span>📆</span> Pengumuman</a>
-            </li>
-            <li>
-              <a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a>
-            </li>
-          </ul>
-        </nav>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="dashboard.html"><span>🏠</span> Dashboard</a></li>
+                    <li><a href="data-warga.html"><span>👥</span> Data Warga</a></li>
+                    <li><a href="kartu-keluarga.html"><span>📁</span> Kartu Keluarga</a></li>
+                    <li><a href="keuangan.html" class="active"><span>💰</span> Keuangan</a></li>
+                    <li><a href="kejadian.html"><span>ℹ️</span> Kejadian</a></li>
+                    <li><a href="pengumuman.html"><span>📆</span> Pengumuman</a></li>
+                    <li><a href="surat-menyurat.html"><span>✉️</span> Surat Menyurat</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <div class="page-header">
                 <h1>Keuangan Perumahan</h1>
-                <button class="btn-primary">Tambah Transaksi</button>
+                <button class="btn-primary" id="btnTambahTransaksi">Tambah Transaksi</button>
             </div>
 
             <!-- Statistik Keuangan -->
             <div class="finance-stats">
                 <div class="stat-box green">
                     <h3>Total Pemasukan</h3>
-                    <p>Rp 3.250.000</p>
+                    <p>Rp. 3.250.000</p>
                 </div>
                 <div class="stat-box red">
                     <h3>Total Pengeluaran</h3>
-                    <p>Rp 3.250.000</p>
+                    <p>Rp. 3.250.000</p>
                 </div>
                 <div class="stat-box blue">
                     <h3>Total Saldo</h3>
-                    <p>Rp 3.250.000</p>
+                    <p>Rp. 3.250.000</p>
                 </div>
             </div>
 
+            <!-- Pencarian -->
             <div class="search-bar">
                 <input type="text" id="searchKeuangan" placeholder="Cari Keterangan......">
                 <button class="btn-search">Cari</button>
             </div>
 
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="btn-filter active" data-filter="all">Semua</button>
+                <button class="btn-filter" data-filter="pemasukan">Pemasukan</button>
+                <button class="btn-filter" data-filter="pengeluaran">Pengeluaran</button>
+            </div>
+
+            <!-- Daftar Transaksi -->
             <div class="table-container">
                 <table>
                     <thead>
@@ -82,65 +77,146 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr data-id="1" data-type="pemasukan">
                             <td>1</td>
                             <td>12/07/2025</td>
-                            <td><span class="type-income">Pemasukan</span></td>
+                            <td class="jenis-pemasukan">Pemasukan</td>
                             <td>Iuran Warga</td>
                             <td>900.000</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="1">Edit</button>
+                                <button class="btn-delete" data-id="1">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="2" data-type="pengeluaran">
                             <td>2</td>
                             <td>11/6/2025</td>
-                            <td><span class="type-expense">Pengeluaran</span></td>
+                            <td class="jenis-pengeluaran">Pengeluaran</td>
                             <td>Kebersihan</td>
                             <td>450.000</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="2">Edit</button>
+                                <button class="btn-delete" data-id="2">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="3" data-type="pemasukan">
                             <td>3</td>
                             <td>23/5/2025</td>
-                            <td><span class="type-income">Pemasukan</span></td>
+                            <td class="jenis-pemasukan">Pemasukan</td>
                             <td>Iuran Warga</td>
                             <td>900.000</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="3">Edit</button>
+                                <button class="btn-delete" data-id="3">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="4" data-type="pemasukan">
                             <td>4</td>
                             <td>30/4/2025</td>
-                            <td><span class="type-income">Pemasukan</span></td>
+                            <td class="jenis-pemasukan">Pemasukan</td>
                             <td>Iuran Warga</td>
                             <td>900.000</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="4">Edit</button>
+                                <button class="btn-delete" data-id="4">Hapus</button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr data-id="5" data-type="pengeluaran">
                             <td>5</td>
                             <td>23/2/2025</td>
-                            <td><span class="type-expense">Pengeluaran</span></td>
+                            <td class="jenis-pengeluaran">Pengeluaran</td>
                             <td>Konsumsi Kerja Bakti</td>
                             <td>200.000</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Hapus</button>
+                                <button class="btn-edit" data-id="5">Edit</button>
+                                <button class="btn-delete" data-id="5">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </main>
+    </div>
+
+    <!-- Modal Tambah Transaksi -->
+    <div class="modal" id="tambahTransaksiModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tambah Transaksi</h2>
+            <form id="formTambahTransaksi">
+                <div class="form-group">
+                    <label for="jenisTransaksi">Jenis Transaksi</label>
+                    <select id="jenisTransaksi" required>
+                        <option value="">Pemasukan / Pengeluaran</option>
+                        <option value="pemasukan">Pemasukan</option>
+                        <option value="pengeluaran">Pengeluaran</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah">Jumlah (Rp)</label>
+                    <input type="text" id="jumlah" placeholder="Contoh: 500000" required>
+                </div>
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <textarea id="keterangan" rows="3" placeholder="Masukkan keterangan transaksi" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="text" id="tanggal" placeholder="Contoh: 12/07/2025" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalTambahTransaksi">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanTambahTransaksi">Tambah Transaksi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Transaksi -->
+    <div class="modal" id="editTransaksiModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Transaksi</h2>
+            <form id="formEditTransaksi">
+                <input type="hidden" id="editTransaksiId">
+                <div class="form-group">
+                    <label for="editJenisTransaksi">Jenis Transaksi</label>
+                    <select id="editJenisTransaksi" required>
+                        <option value="">Pemasukan / Pengeluaran</option>
+                        <option value="pemasukan">Pemasukan</option>
+                        <option value="pengeluaran">Pengeluaran</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editJumlah">Jumlah (Rp)</label>
+                    <input type="text" id="editJumlah" required>
+                </div>
+                <div class="form-group">
+                    <label for="editKeterangan">Keterangan</label>
+                    <textarea id="editKeterangan" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTanggal">Tanggal</label>
+                    <input type="text" id="editTanggal" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="btnBatalEditTransaksi">Batal</button>
+                    <button type="submit" class="btn-save" id="btnSimpanEditTransaksi">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal" id="hapusTransaksiModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yakin ingin menghapus item ini?</h2>
+            <div class="modal-buttons">
+                <button type="button" class="btn-ok" id="btnOkHapusTransaksi">OK</button>
+                <button type="button" class="btn-cancel" id="btnBatalHapusTransaksi">Batal</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

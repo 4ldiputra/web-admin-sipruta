@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             if (username === 'admin' && password === 'password') {
-                // Simpan status login
                 localStorage.setItem('isLoggedIn', 'true');
                 alert('Login berhasil!');
                 window.location.href = 'dashboard.html';
@@ -16,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
-    // === CEK LOGIN UNTUK HALAMAN ADMIN ===
-    // Proteksi ini di-handle di setiap file HTML, bukan di sini
 
     // === SIDEBAR ACTIVE ===
     const currentPath = window.location.pathname.split('/').pop();
@@ -380,6 +376,76 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // === MODAL KEUANGAN ===
+    // Tambah Transaksi
+    const btnTambahTransaksi = document.getElementById('btnTambahTransaksi');
+    const tambahTransaksiModal = document.getElementById('tambahTransaksiModal');
+    const btnBatalTambahTransaksi = document.getElementById('btnBatalTambahTransaksi');
+    const btnSimpanTambahTransaksi = document.getElementById('btnSimpanTambahTransaksi');
+    const formTambahTransaksi = document.getElementById('formTambahTransaksi');
+
+    if (btnTambahTransaksi && tambahTransaksiModal) {
+        btnTambahTransaksi.addEventListener('click', function () {
+            tambahTransaksiModal.style.display = 'block';
+        });
+    }
+
+    if (btnBatalTambahTransaksi) {
+        btnBatalTambahTransaksi.addEventListener('click', function () {
+            tambahTransaksiModal.style.display = 'none';
+            formTambahTransaksi.reset();
+        });
+    }
+
+    if (formTambahTransaksi) {
+        formTambahTransaksi.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('✅ Transaksi baru berhasil ditambahkan!');
+            tambahTransaksiModal.style.display = 'none';
+            formTambahTransaksi.reset();
+        });
+    }
+
+    // Edit Transaksi
+    const editTransaksiModal = document.getElementById('editTransaksiModal');
+    const btnBatalEditTransaksi = document.getElementById('btnBatalEditTransaksi');
+    const btnSimpanEditTransaksi = document.getElementById('btnSimpanEditTransaksi');
+    const formEditTransaksi = document.getElementById('formEditTransaksi');
+
+    if (btnBatalEditTransaksi) {
+        btnBatalEditTransaksi.addEventListener('click', function () {
+            editTransaksiModal.style.display = 'none';
+            formEditTransaksi.reset();
+        });
+    }
+
+    if (formEditTransaksi) {
+        formEditTransaksi.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('✅ Data transaksi berhasil diperbarui!');
+            editTransaksiModal.style.display = 'none';
+            formEditTransaksi.reset();
+        });
+    }
+
+    // Hapus Transaksi
+    const hapusTransaksiModal = document.getElementById('hapusTransaksiModal');
+    const btnOkHapusTransaksi = document.getElementById('btnOkHapusTransaksi');
+    const btnBatalHapusTransaksi = document.getElementById('btnBatalHapusTransaksi');
+
+    if (btnBatalHapusTransaksi) {
+        btnBatalHapusTransaksi.addEventListener('click', function () {
+            hapusTransaksiModal.style.display = 'none';
+        });
+    }
+
+    if (btnOkHapusTransaksi) {
+        btnOkHapusTransaksi.addEventListener('click', function () {
+            alert('🗑️ Data transaksi berhasil dihapus!');
+            hapusTransaksiModal.style.display = 'none';
+        });
+    }
+
     // === FUNGSI UNTUK MEMBUKA MODAL ===
     // Detail KK
     function openDetailModal(id) {
@@ -493,6 +559,24 @@ document.addEventListener('DOMContentLoaded', function () {
         hapusSuratModal.dataset.id = id;
     }
 
+    // Edit Transaksi
+    function openEditTransaksiModal(id) {
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editTransaksiId').value = id;
+        document.getElementById('editJenisTransaksi').value = cells[2].classList.contains('jenis-pemasukan') ? 'pemasukan' : 'pengeluaran';
+        document.getElementById('editJumlah').value = cells[4].textContent.trim();
+        document.getElementById('editKeterangan').value = cells[3].textContent.trim();
+        document.getElementById('editTanggal').value = cells[1].textContent.trim();
+        editTransaksiModal.style.display = 'block';
+    }
+
+    // Hapus Transaksi
+    function openHapusTransaksiModal(id) {
+        hapusTransaksiModal.style.display = 'block';
+        hapusTransaksiModal.dataset.id = id;
+    }
+
     // === EVENT LISTENER GLOBAL UNTUK TOMBOL ===
     document.addEventListener('click', function (e) {
         // Detail KK
@@ -513,6 +597,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 openEditPengumumanModal(e.target.dataset.id);
             } else if (page === 'surat-menyurat.html') {
                 openEditSuratModal(e.target.dataset.id);
+            } else if (page === 'keuangan.html') {
+                openEditTransaksiModal(e.target.dataset.id);
             }
         }
 
@@ -529,6 +615,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 openHapusPengumumanModal(e.target.dataset.id);
             } else if (page === 'surat-menyurat.html') {
                 openHapusSuratModal(e.target.dataset.id);
+            } else if (page === 'keuangan.html') {
+                openHapusTransaksiModal(e.target.dataset.id);
             }
         }
     });
@@ -550,7 +638,10 @@ document.addEventListener('DOMContentLoaded', function () {
             { modal: 'editPengumumanModal', form: 'formEditPengumuman' },
             { modal: 'hapusPengumumanModal' },
             { modal: 'editSuratModal', form: 'formEditSurat' },
-            { modal: 'hapusSuratModal' }
+            { modal: 'hapusSuratModal' },
+            { modal: 'tambahTransaksiModal', form: 'formTambahTransaksi' },
+            { modal: 'editTransaksiModal', form: 'formEditTransaksi' },
+            { modal: 'hapusTransaksiModal' }
         ];
 
         modals.forEach(item => {
@@ -563,6 +654,40 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     };
+
+    // === FILTER KEUANGAN ===
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('btn-filter')) {
+        // Hapus kelas 'active' dari semua tombol
+        document.querySelectorAll('.btn-filter').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Tambahkan kelas 'active' ke tombol yang diklik
+        e.target.classList.add('active');
+
+        const filterType = e.target.dataset.filter;
+
+        // Sembunyikan semua baris
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.style.display = 'none';
+        });
+
+        // Tampilkan baris sesuai filter
+        if (filterType === 'all') {
+            rows.forEach(row => {
+                row.style.display = '';
+            });
+        } else {
+            rows.forEach(row => {
+                if (row.dataset.type === filterType) {
+                    row.style.display = '';
+                }
+            });
+        }
+    }
+});
 
     // === TUTUP MODAL SAAT KLIK X ===
     document.querySelectorAll('.close').forEach(btn => {
@@ -578,7 +703,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 'tambahKejadianModal': 'formTambahKejadian',
                 'editKejadianModal': 'formEditKejadian',
                 'editPengumumanModal': 'formEditPengumuman',
-                'editSuratModal': 'formEditSurat'
+                'editSuratModal': 'formEditSurat',
+                'tambahTransaksiModal': 'formTambahTransaksi',
+                'editTransaksiModal': 'formEditTransaksi'
             };
             const formId = formMap[modal.id];
             if (formId) {
