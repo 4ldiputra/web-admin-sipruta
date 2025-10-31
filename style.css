@@ -162,13 +162,17 @@ body {
     background-color: #d4f1d0;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 250px;
     background-color: #4caf50;
     color: white;
     padding: 20px 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;  /* TAMBAHKAN INI */
+    left: 0;          /* TAMBAHKAN INI */
+    top: 0;           /* TAMBAHKAN INI */
+    height: 100vh;    /* TAMBAHKAN INI */
+    overflow-y: auto; /* TAMBAHKAN INI - untuk scroll jika menu terlalu panjang */
 }
 
 .sidebar-header {
@@ -232,6 +236,7 @@ body {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    margin-left: 250px; /* TAMBAHKAN INI - agar content tidak tertutup sidebar */
 }
 
 .page-header {
